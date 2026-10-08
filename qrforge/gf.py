@@ -7,7 +7,7 @@ pure Python and dependency free.
 
 from __future__ import annotations
 
-from typing import List, Sequence, Tuple
+from typing import Dict, List, Sequence, Tuple
 
 PRIMITIVE_POLY = 0x11D
 
@@ -91,7 +91,7 @@ def generator_poly(degree: int) -> List[int]:
     return g
 
 
-_GEN_CACHE: dict[int, List[int]] = {}
+_GEN_CACHE: Dict[int, List[int]] = {}
 
 
 def rs_encode(data: Sequence[int], ec_len: int) -> List[int]:

@@ -182,10 +182,16 @@ class Gradient(ColorSource):
     # --------------------------------------------------------------------- svg
     def svg_paint(self, uid: str, x: float, y: float, w: float, h: float,
                   defs: List[str]) -> str:
-        offsets = "".join(
-            f'<stop offset="{s.position:.4f}" stop-color="{s.color.hex()}"'
-            f'{" stop-opacity=\"" + f"{s.color.alpha:.3f}" + "\"" if s.color.a != 255 else ""}/>'
-            for s in self.stops)
+        def _stop(s: "Stop") -> str:
+            # Built outside the f-string: backslashes inside f-string
+            # expressions are only legal on Python 3.12+.
+            opacity = ""
+            if s.color.a != 255:
+                opacity = ' stop-opacity="%.3f"' % s.color.alpha
+            return ('<stop offset="%.4f" stop-color="%s"%s/>'
+                    % (s.position, s.color.hex(), opacity))
+
+        offsets = "".join(_stop(s) for s in self.stops)
         if self.kind == "linear":
             rad = math.radians(self.angle - 90.0)
             dx, dy = math.cos(rad), math.sin(rad)

@@ -417,3 +417,18 @@ def test_preset_color_override():
     # overrides also win through the render path
     svg = qr.svg("neon", bg="#010203")
     assert "010203" in svg
+
+
+def test_gradient_svg_stop_opacity_for_translucent_stops():
+    # Regression: gradient.py used a backslash inside an f-string expression,
+    # which is a SyntaxError on Python < 3.12 and broke `import qrforge`.
+    from qrforge.color import Color
+    from qrforge.gradient import Gradient, Stop
+
+    grad = Gradient([Stop(0.0, Color(255, 0, 0, 128)), Stop(1.0, Color(0, 0, 255))],
+                    kind="linear", angle=90)
+    defs: list = []
+    grad.svg_paint("g1", 0, 0, 100, 100, defs)
+    svg = defs[0]
+    assert 'offset="0.0000" stop-color="#ff0000" stop-opacity="0.502"' in svg
+    assert 'offset="1.0000" stop-color="#0000ff"/>' in svg
