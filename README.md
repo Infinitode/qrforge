@@ -29,6 +29,7 @@ pip install pillow       # optional, only for non-PNG formats / PIL images
 ## Supported Python Versions
 
 * Python 3.8 / 3.9 / 3.10 / 3.11 / 3.12 (or later)
+* **Testing status:** the test suite was run on Python 3.11 only. Python 3.8, 3.9 and 3.10 are declared as supported but have **not been tested**; the code was checked statically for 3.8-compatible syntax and library usage. Please report any problems on those versions.
 
 ## Features
 
