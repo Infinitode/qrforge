@@ -9,7 +9,14 @@ An open-source Python library for **generating and art-directing QR codes**: cus
 *qrforge implements the full QR encoding pipeline (modes, Reed–Solomon error correction, masking, versions 1–40) from scratch against the standard library. There are **zero required dependencies**; [Pillow](https://pillow.readthedocs.io) is used only for non-PNG image formats, PIL images, or JPEG/GIF/WEBP logos. PNG reading/writing is built in.*
 
 > [!NOTE]
-> **qrforge** is intended to produce both *correct* and *beautiful* QR codes. Every rendered symbol is round-trip verified by a bundled decoder, and the test-suite re-rasterises the SVG geometry to prove it reproduces the matrix — so "pretty" never comes at the cost of "scannable".
+> **qrforge** is intended to produce both *correct* and *beautiful* QR codes. Every rendered symbol is round-trip verified by a bundled decoder, and the test suite re-rasterises the SVG geometry to prove it reproduces the matrix — so "pretty" never comes at the cost of "scannable".
+
+## Changelog:
+### v1.0.1
+
+- **Fix `import qrforge` failing on Python 3.8–3.11.** `gradient.py` `svg_paint` had a backslash inside an f-string expression, which is only legal on 3.12+. The stop-opacity attribute is now built outside the f-string. Adds a regression test for translucent gradient stops.
+- **`gf.py`:** replace builtin `dict[...]` annotation with `typing.Dict` (3.8-safe spelling).
+- **README:** explicitly states that Python 3.8–3.10 are declared as supported but **not tested**; the test suite was only run on Python 3.11.
 
 ## Installation
 
