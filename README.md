@@ -33,9 +33,9 @@ pip install pillow       # optional, only for non-PNG formats / PIL images
 ## Features
 
 * **Correct encoder** – versions 1–40, EC levels L/M/Q/H, optimal numeric/alphanumeric/byte segmentation, automatic mask selection.
-* **Shapes** – square, rounded, dot, diamond, hexagon, star, cross, squircle, leaf, heart… plus random-per-module mixes and your own SDF shapes.
+* **Shapes** – square, rounded, dot, diamond, hexagon, star, cross, squircle, leaf, heart etc. plus random-per-module mixes and your own SDF shapes.
 * **Gradients & colours** – hex / `rgb()` / `hsl()` / CSS names; linear, radial and conic gradients for modules, eyes and background.
-* **Shaders** – grain, glow, wave, twist, glitch, chromatic aberration, halftone, duotone, scanlines, vignette… plus custom Python or one-line expression shaders.
+* **Shaders** – grain, glow, wave, twist, glitch, chromatic aberration, halftone, duotone, scanlines, vignette etc. plus custom Python or one-line expression shaders.
 * **Logos & textures** – auto knockout zone, round/clip the logo, logo background, stroke, rotation, opacity; paint any image inside the modules.
 * **Outputs** – PNG (pure-Python codec), SVG (tiny vector), PDF (vector), terminal ANSI, ASCII, Pillow, HTML.
 * **22 ready-made presets** and a CLI.
@@ -96,7 +96,7 @@ qr.use_style(logo="logo.png", logo_size=0.26, logo_shape="rounded",
 
 ### Presets & overrides
 
-Any preset's defaults (colours, shaders, …) can be overridden:
+Any preset's defaults (colours, shaders,  etc.) can be overridden:
 
 ```python
 qrforge.save("hi", "out.png", "neon", fg="#00ff88", scale=12)
